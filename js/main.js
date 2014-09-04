@@ -1,4 +1,3 @@
-
 function showModal(){
 
 	$('#js-form').dialog('open');
