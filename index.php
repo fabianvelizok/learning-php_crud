@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="/stylesheet/jquery-ui.theme.min.css">
 
 		<script src="js/vendor/jquery-1.11.0.min.js"></script>
-		<script src="js/vendor/jquery.validate.js"></script>
+		<script src="js/vendor/jquery.validate.min.js"></script>
 		<script src="js/vendor/jquery-ui.js"></script>
 		<script src="js/vendor/jquery.metadata.min.js"></script>
 		<script src="js/vendor/messages_es_AR.js"></script>

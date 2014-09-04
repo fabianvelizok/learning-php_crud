@@ -20,11 +20,12 @@ function onReady(){
 		}
 	});
 
+	$('#js-form').validate();
+
+
 	$('.js-addUser').on('click',showModal);
 
 	
 }
 
 $(document).on('ready',onReady);
-
-(function(){})
