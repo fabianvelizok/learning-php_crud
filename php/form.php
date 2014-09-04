@@ -3,32 +3,31 @@
 	<div class="control-group">
 		<label class="control-label" for="userName">Name</label>
 		<div class="controls">
-			<input type="text" name="user_name" id="userName" class="span">
+			<input type="text" name="user_name" id="userName">
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="inputPosition">Position</label>
 		<div class="controls">
-			<input type="text" name="user_position" id="inputPosition" class="span">
+			<input type="text" name="user_position" id="inputPosition" class="url" required>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="inputNick">Nick</label>
 		<div class="controls">
-			<input type="text" name="user_nick" id="inputNick" class="span">
+			<input type="text" name="user_nick" id="inputNick" required>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="selectStatus">Status</label>
 		<div class="controls">
-			<select id="selectStatus">
-				<option data="default">Select an option</option>
+			<select id="selectStatus" name="user_status" required>
+				<option disabled>Select an option</option>
 				<option value="active">Active</option>
 				<option value="not_active">Not Active</option>
-
 			</select>
 		</div>
 	</div>

@@ -20,7 +20,26 @@ function onReady(){
 		}
 	});
 
-	$('#js-form').validate();
+	$('#js-form').validate({
+		rules:{
+			user_name:{
+				required: true,
+				minlength: 3
+			}
+		},
+		submitHandler:function(){
+
+			var dataForm = $('#js-form').serialize();
+
+			console.log(dataForm);
+
+		},
+
+		errorPlacement:function(error,element){
+			element.parent().append('<div class="error"></div>').find('.error').html(error);
+
+		}
+	});
 
 
 	$('.js-addUser').on('click',showModal);
