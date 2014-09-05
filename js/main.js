@@ -26,16 +26,21 @@ function onReady(){
 				minlength: 3
 			}
 		},
+		
 		submitHandler:function(){
 
 			var dataForm = $('#js-form').serialize();
 
 			console.log(dataForm);
 
+			$.ajax({
+
+			});
+
 		},
 
 		errorPlacement:function(error,element){
-			element.parent().append('<div class="error"></div>').find('.error').html(error);
+			element.parent().append('<div class="errorItem"></div>').find('.errorItem').html(error);
 
 		}
 	});

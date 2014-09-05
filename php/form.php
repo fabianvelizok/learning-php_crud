@@ -10,7 +10,7 @@
 	<div class="control-group">
 		<label class="control-label" for="inputPosition">Position</label>
 		<div class="controls">
-			<input type="text" name="user_position" id="inputPosition" class="url" required>
+			<input type="text" name="user_position" id="inputPosition" class="required" required>
 		</div>
 	</div>
 
@@ -24,11 +24,14 @@
 	<div class="control-group">
 		<label class="control-label" for="selectStatus">Status</label>
 		<div class="controls">
-			<select id="selectStatus" name="user_status" required>
-				<option disabled>Select an option</option>
-				<option value="active">Active</option>
-				<option value="not_active">Not Active</option>
-			</select>
+			<div class="algo">
+				<select id="selectStatus" name="user_status" required>
+					<option disabled>Select an option</option>
+					<option value="active">Active</option>
+					<option value="not_active">Not Active</option>
+				</select>
+				
+			</div>
 		</div>
 	</div>
 

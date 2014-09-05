@@ -1,5 +1,21 @@
 <?php
+
+	error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+
 	include('php/mainFunctions.php');
+
+	if($errorDb!=true){
+
+		$queryUser = queryUser($mysqli);
+
+	}else{
+
+		$queryUser = '
+				<tr>
+					<td colspan="5">Error to connect database</td>
+				</tr>
+		';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +32,10 @@
 
 		<link rel="stylesheet" href="/stylesheet/jquery-ui.min.css">
 		<link rel="stylesheet" href="/stylesheet/jquery-ui.theme.min.css">
+		
+		<!--Loader-->
+		<link rel="stylesheet" href="http://css-spinners.com/css/spinner/dots.css" type="text/css">
+
 
 		<!--<script src="js/vendor/jquery.metadata.min.js"></script>-->
 		<script src="js/vendor/jquery-1.11.0.min.js"></script>
@@ -61,16 +81,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Fabian</td>
-								<td>Jefe</td>
-								<td>Feibian</td>
-								<td>Active</td>
-								<td><button class="btn btn-block btn-warning">Edit</button></td>
-							</tr>
+							
+							<?= $queryUser; ?>
 							
 						</tbody>
 					</table>
+					
+					<div class="fullScreen">
+						
+						<div class="dots ">
+							Loading...
+						</div>
+						
+					</div>
 
 				</div><!--.container-->
 				
