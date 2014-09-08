@@ -31,10 +31,33 @@ function onReady(){
 
 			var dataForm = $('#js-form').serialize();
 
-			console.log(dataForm);
-
 			$.ajax({
+				beforeSend:function(){
+					$('.fullScreen').show();
+				},
+				cache: false,
+				method: 'POST',
+				dataType: 'json',
+				url:'../php/ajaxUsers.php',
+				data: dataForm + '&action=addUser',
 
+				success:function(data){
+
+					if(data.answer==true){
+						$('#js-form').dialog('close');
+						$('#insert tbody').append(data.data);
+						
+					}else{
+						console.log('Error al enviar los datos del servidor');
+					}
+
+					$('.fullScreen').hide();
+				},
+
+				error:function(){
+					console.log('ERROR!!!!!!!!');
+					
+				},
 			});
 
 		},

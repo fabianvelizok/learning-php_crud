@@ -66,7 +66,7 @@
 
 					<button class="js-addUser btn-block btn btn-primary btn-large">Add User</button>
 
-					<table class="table table-bordered table-striped">
+					<table id="insert" class="table table-bordered table-striped">
 						<colgroup>
 							<col class="span1">
 							<col class="span7">
@@ -88,9 +88,13 @@
 					</table>
 					
 					<div class="fullScreen">
-						
-						<div class="dots ">
-							Loading...
+
+						<div class="boxDots">
+							
+							<div class="dots ">
+								Loading...
+							</div>
+
 						</div>
 						
 					</div>
