@@ -1,23 +1,28 @@
 <form action="/" class="form-horizontal" id="js-form" method="POST">
 
 	<div class="control-group">
+		<input type="hidden" id="action" name="action" required>
+		<input type="hidden" id="userId" name="user_id" value="0" required>
+	</div>
+
+	<div class="control-group">
 		<label class="control-label" for="userName">Name</label>
 		<div class="controls">
-			<input type="text" name="user_name" id="userName">
+			<input type="text" name="user_name" id="userName" required>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="inputPosition">Position</label>
 		<div class="controls">
-			<input type="text" name="user_position" id="inputPosition" class="required" required>
+			<input type="text" name="user_position" id="userPosition" required>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="inputNick">Nick</label>
 		<div class="controls">
-			<input type="text" name="user_nick" id="inputNick" required>
+			<input type="text" name="user_nick" id="userNick" required>
 		</div>
 	</div>
 

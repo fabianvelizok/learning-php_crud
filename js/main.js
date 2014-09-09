@@ -1,13 +1,19 @@
 function showModal(){
 
-	$('#js-form').dialog('open');
+	var idUser = $(this).data('id');
+	$('#action').val('addUser');
+	$('#userId').val(0);
+
+	$('#js-form').dialog({
+		autoOpen:true,
+		title: 'Add User',
+	});
 }
 
 function onReady(){
 
 	$('#js-form').dialog({
 		autoOpen:false,
-		title: 'Add user',
 		closeOnScape: true,
 		widht: 'auto',
 		height: 'auto',
@@ -22,9 +28,14 @@ function onReady(){
 	$('#js-form').validate({
 		rules:{
 			user_name:{
-				required: true,
+				minlength: 4
+			},
+			user_position:{
 				minlength: 3
-			}
+			},
+			user_nick:{
+				minlength: 3
+			},
 		},
 		
 		submitHandler:function(){
@@ -38,26 +49,36 @@ function onReady(){
 				cache: false,
 				method: 'POST',
 				dataType: 'json',
-				url:'../php/ajaxUsers.php',
-				data: dataForm + '&action=addUser',
+				url:'php/ajaxUsers.php',
+				data: dataForm,
 
 				success:function(data){
 
 					if(data.answer==true){
+						if($('#action').val() == 'editUser') $('#insert tbody').empty();
+						
+						if($('#insert #notData').length){
+							$('#insert tbody').html(data.data);
+							
+						}else{
+							$('#insert tbody').append(data.data);
+
+						}
+
 						$('#js-form').dialog('close');
-						$('#insert tbody').append(data.data);
+
 						
 					}else{
-						console.log('Error al enviar los datos del servidor');
+						console.log(data.message);
 					}
 
 					$('.fullScreen').hide();
 				},
 
 				error:function(){
-					console.log('ERROR!!!!!!!!');
+					alert('ERROR!');
 					
-				},
+				}
 			});
 
 		},
@@ -70,6 +91,41 @@ function onReady(){
 
 
 	$('.js-addUser').on('click',showModal);
+
+	$('td.center #js-editUser').on('click',function(){
+		$('#insert tbody tr').removeClass('selected');
+
+		var idUser = $(this).data('id'),
+			itemToSelect = $(this).parent().parent().find('td');
+		
+		$('#action').val('editUser');
+		$('#userId').val(idUser);
+		$('#js-form').dialog({
+			autoOpen:true,
+			title: 'Edit User',
+		});
+
+		$('#userName').val(itemToSelect.eq(0).html());
+		$('#userPosition').val(itemToSelect.eq(1).html());
+		$('#userNick').val(itemToSelect.eq(2).html());
+		$('#selectStatus option[value="'+itemToSelect.eq(3).html()+'"]').attr('selected',true);
+
+	});
+
+	$('td.center #js-deleteUser').on('click',function(){
+
+		var idUser = $(this).data('id')
+			,parentItem = $(this).parent().parent();
+		$('#action').val('deleteUser');
+		$('#userId').val(idUser);
+		$('#js-form').dialog('close');
+
+		
+		textAlert = 'Esta seguro de eliminar este registro?'
+
+		if(confirm(textAlert)) parentItem.remove();
+
+	});
 
 	
 }

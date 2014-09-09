@@ -28,7 +28,10 @@
 						<td>'.$register['user_position'].'</td>
 						<td>'.$register['user_nick'].'</td>
 						<td>'.$register['user_status'].'</td>
-						<td><button class="btn btn-block btn-warning">Edit</button></td>
+						<td class="center">
+							<button id="js-editUser" data-id="'.$register['user_id'].'" class="btn btn-warning">Edit</button>
+							<button id="js-deleteUser" data-id="'.$register['user_id'].'" class="btn btn-danger">Delete</button>
+						</td>
 					</tr>
 
 				';
@@ -37,7 +40,7 @@
 		}else{
 			$data = '
 					<tr>
-						<td colspan="5">Not Data</td>
+						<td colspan="5" id="notData">Not Data</td>
 					</tr>
 			';
 		}

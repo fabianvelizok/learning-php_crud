@@ -1,6 +1,6 @@
 <?php
 	
-	sleep(5);
+	//sleep(5);
 	$dataOk = false;
 	$messageError = 'No se pudo ejecutar la app';
 	$content = ''; 
@@ -22,6 +22,8 @@
 
 					$rsql = $mysqli -> query($query); 
 
+					$userId = $mysqli -> insert_id;
+
 					if($rsql==true){
 						$dataOk = true;
 						$messageError = 'Se insertaron los valores';
@@ -30,7 +32,10 @@
 										<td>'.$_POST['user_position'].'</td>
 										<td>'.$_POST['user_nick'].'</td>
 										<td>'.$_POST['user_status'].'</td>
-										<td><button class="btn btn-block btn-warning">Edit</button></td>
+										<td class="center">
+											<button id="js-editUser" data-id="'.$userId.'" class="btn btn-warning">Edit</button>
+											<button id="js-deleteUser" data-id="'.$userId.'" class="btn btn-danger">Delete</button>
+										</td>
 									</tr>
 						';
 
@@ -40,14 +45,37 @@
 					}
 
 				break;
+
+				case 'editUser':
+
+					$userName 		= $_POST['user_name'];
+					$userPosition 	= $_POST['user_position'];
+					$userNick 		= $_POST['user_nick'];
+					$userStatus 	= $_POST['user_status'];
+					$userId			= $_POST['user_id'];
+
+					$query = "UPDATE user SET user_name='$userName', user_position='$userPosition', user_nick='$userNick', user_status='$userStatus' WHERE user_id='$userId'";
+
+					$rsql = $mysqli -> query($query); 
+
+					if($mysqli -> affected_rows == 1){
+						$dataOk = true;
+						$messageError = 'Se actualizó el registro';
+						$content = queryUser($mysqli);
+
+					}else{
+						$dataOk = false;
+						$messageError = 'No se pudo actualizar el registro';
+					}
+
+				break;				
+
 				
 				default:
 					$messageError = 'Acción no disponible';
 				break;
 			}
 
-			$userName 		= $_POST['user_name'];
-			$userPosition	= $_POST['user_position'];
 		
 		}else{
 			$dataOk = false;
