@@ -64,7 +64,7 @@
 				<!--.container-->
 				<div class="container">
 
-					<button class="js-addUser btn-block btn btn-primary btn-large">Add User</button>
+					<button id="js-addUser" class="btn-block btn btn-primary btn-large">Add User</button>
 
 					<table id="insert" class="table table-bordered table-striped">
 						<colgroup>
@@ -102,8 +102,13 @@
 				</div><!--.container-->
 				
 			</div>
-
+			
 			<?php include('php/form.php'); ?>
+			
+			<div id="js-boxDeleteUser" title="Delete User">
+				<i class="ui-icon ui-icon-alert" style="display:inline-block; vertical-align: middle;"></i>
+				<span  style="display:inline-block; vertical-align: middle;">Eliminará este registro</span>				
+			</div>
 
 			<footer>
 				<div class="container">

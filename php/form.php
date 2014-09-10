@@ -31,7 +31,7 @@
 		<div class="controls">
 			<div class="algo">
 				<select id="selectStatus" name="user_status" required>
-					<option disabled>Select an option</option>
+					<option disabled="true">Select an option</option>
 					<option value="active">Active</option>
 					<option value="not_active">Not Active</option>
 				</select>

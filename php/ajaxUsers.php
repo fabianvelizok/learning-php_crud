@@ -1,6 +1,6 @@
 <?php
 	
-	//sleep(5);
+	sleep(2);
 	$dataOk = false;
 	$messageError = 'No se pudo ejecutar la app';
 	$content = ''; 
@@ -66,6 +66,26 @@
 					}else{
 						$dataOk = false;
 						$messageError = 'No se pudo actualizar el registro';
+					}
+
+				break;
+
+				case 'deleteUser':
+
+					$userId = $_POST['user_id'];
+
+					$query = "DELETE FROM user WHERE user_id=$userId LIMIT 1";
+
+					$rsql = $mysqli -> query($query); 
+
+					if($mysqli -> affected_rows == 1){
+						$dataOk = true;
+						$messageError = 'Se eliminó el registro';
+						$content = queryUser($mysqli);
+
+					}else{
+						$dataOk = false;
+						$messageError = 'No se pudo eliminar el registro';
 					}
 
 				break;				
